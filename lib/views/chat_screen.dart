@@ -1,5 +1,6 @@
 import 'package:chatgptapplication/constants/constants.dart';
 import 'package:chatgptapplication/services/assets_manager.dart';
+import 'package:chatgptapplication/widgets/chat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -50,7 +51,10 @@ late TextEditingController _textController;
               child: ListView.builder(
                 itemCount: 5,
                 itemBuilder: (context, index) {
-                  return ListTile(title: Text('Message '));
+                  return ChatWidget(
+                    messege: chatMessages[index]['msg'] as String,
+                    msgIndex: chatMessages[index]['chatIndex'] as int,
+                  );
                 },
               ),
             ),
