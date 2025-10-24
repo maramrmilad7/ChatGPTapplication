@@ -1,6 +1,8 @@
 import 'package:chatgptapplication/constants/constants.dart';
 import 'package:chatgptapplication/services/assets_manager.dart';
+import 'package:chatgptapplication/services/service.dart';
 import 'package:chatgptapplication/widgets/chat_widget.dart';
+import 'package:chatgptapplication/widgets/textwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -12,18 +14,20 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-final  bool _isTyping = true;
-late TextEditingController _textController;
-@override
+  final bool _isTyping = true;
+  late TextEditingController _textController;
+  @override
   void initState() {
     _textController = TextEditingController();
     super.initState();
   }
+
   @override
-  void dispose(){
+  void dispose() {
     _textController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +43,9 @@ late TextEditingController _textController;
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              await Service.showModalSheet(context: context);
+            },
             icon: Icon(Icons.more_vert_rounded, color: Colors.white),
           ),
         ],
@@ -59,13 +65,10 @@ late TextEditingController _textController;
               ),
             ),
 
-            if(_isTyping) ...[
-            const  SpinKitThreeBounce(
-                color: Colors.white,
-                size: 18,
-              ), 
+            if (_isTyping) ...[
+              const SpinKitThreeBounce(color: Colors.white, size: 18),
             ],
-            SizedBox(height: 15,),
+            SizedBox(height: 15),
             Material(
               color: cardColor,
               child: Padding(
@@ -76,7 +79,9 @@ late TextEditingController _textController;
                       child: TextField(
                         onSubmitted: (value) {},
                         controller: _textController,
-                        style: TextStyle(color: Colors.white),//color of input text
+                        style: TextStyle(
+                          color: Colors.white,
+                        ), //color of input text
                         decoration: InputDecoration.collapsed(
                           hintText: 'Type a message',
                           hintStyle: TextStyle(color: Colors.grey),

@@ -34,6 +34,23 @@ class ChatWidget extends StatelessWidget {
                       ? CustomTextWidget(text: messege)
                       : CustomTextWidget(text: messege),
                 ),
+                msgIndex == 0
+                    ? const SizedBox.shrink()
+                    : Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.thumb_up_alt_outlined,
+                            color: Colors.white,
+                          ),
+                          SizedBox(width: 5),
+                          Icon(
+                            Icons.thumb_down_alt_outlined,
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
               ],
             ),
           ),
