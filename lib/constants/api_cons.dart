@@ -1,0 +1,2 @@
+String apiKey = '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';
+String baseUrl = 'https://api.openai.com/v1';

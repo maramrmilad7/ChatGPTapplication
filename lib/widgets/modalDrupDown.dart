@@ -16,7 +16,7 @@ class _ModalDrupDownState extends State<ModalDrupDown> {
       items: getModelsItem,
       value: currentModel,
       dropdownColor: scaffoldBackgroundColor,
-     // iconEnabledColor: Colors.white,
+     iconEnabledColor: Colors.white,
       onChanged: (value) {
         currentModel = value.toString();
         setState(() {});
